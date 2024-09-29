@@ -1,0 +1,6 @@
+HAS_PNPM_LOCK=("$(git diff --name-only HEAD@{1} HEAD | grep -E "pnpm-lock.yaml")")
+
+if [ ${HAS_PNPM_LOCK} ]; then
+  echo "pnpm-lock.yaml changed, execute pnpm install"
+  pnpm install
+fi

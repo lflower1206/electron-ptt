@@ -1,7 +1,8 @@
-import globals from 'globals'
-import pluginJs from '@eslint/js'
-import tsLint from 'typescript-eslint'
-import pluginReact from 'eslint-plugin-react'
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import pluginReact from 'eslint-plugin-react';
+import pluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import tsLint from 'typescript-eslint';
 
 export default [
   {
@@ -12,10 +13,12 @@ export default [
     languageOptions: {
       ...pluginReact.configs.recommended.languageOptions,
       globals: {
-        ...globals.browser, ...globals.node
-      },
+        ...globals.browser,
+        ...globals.node
+      }
     }
   },
   pluginJs.configs.recommended,
   ...tsLint.configs.recommended,
-]
+  pluginPrettierRecommended
+];
